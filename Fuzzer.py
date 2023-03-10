@@ -2,8 +2,8 @@
 
 import socket
 
-rhost="192.168.13.132"
-rport=42424
+rhost=""
+rport=
 
 msg=b"\x41"*100
 while True:
