@@ -2,9 +2,9 @@
 
 import socket, time, sys
 
-ip = "192.168.13.132"
+ip = ""
 
-port = 42424
+port = 
 timeout = 1
 
 string = "A" * 100
